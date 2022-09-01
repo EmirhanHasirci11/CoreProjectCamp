@@ -1,0 +1,39 @@
+﻿<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<div class="comment-top">
+    <h4>Yorum ekle</h4>
+    <div class="comment-bottom">
+        <form method="POST" id="form" asp-action="LeaveComment" asp-controller="Comment" autocomplete="off">
+            <input class="form-control"  type="hidden" id="BlogId" value="@ViewBag.blogID">
+            <input class="form-control" type="text" id="CommentUserName" placeholder="Adınız" >
+            <input class="form-control" type="text" id="CommentTitle" placeholder="Konu">
+
+            <textarea class="form-control" id="CommentContent" placeholder="Yorumunuz..." ></textarea>
+
+        </form>
+        <input type="submit" value="Yorum Yap" onclick="Save()" class="btn btn-success" />
+    </div>
+</div>
+<script>
+    function Save() {        
+        var controllerUrl = $("#form").attr("action");
+        var BlogId = document.getElementById("BlogId");
+        var CommentUserName = document.getElementById("CommentUserName");
+        var CommentTitle = document.getElementById("CommentTitle");
+        var CommentContent = document.getElementById("CommentContent");
+        var form = document.getElementById("form");
+        var formData = new FormData(form);
+        formData.append("BlogId", BlogId.value);
+        formData.append("CommentUserName", CommentUserName.value);
+        formData.append("CommentTitle", CommentTitle.value);
+        formData.append("CommentContent", CommentContent.value);
+        var url = controllerUrl;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(res => res.json())
+            .then(result => {
+                
+                window.location.reload(1);
+            }, 1000);
+    }
+</script>

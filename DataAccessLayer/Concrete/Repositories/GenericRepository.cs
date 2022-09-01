@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,16 +10,18 @@ namespace DataAccessLayer.Concrete.Repositories
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        public T GetById(int id)
+        public T GetById(Expression<Func<T, bool>> filter)
         {
             using var c = new Context();
-            return c.Set<T>().Find(id);
+            return c.Set<T>().Where(filter).FirstOrDefault();
         }
 
-        public List<T> GetList()
+        
+
+        public List<T> GetList(Expression<Func<T, bool>> filter=null)
         {
             using var c = new Context();
-            return c.Set<T>().ToList();
+            return filter == null ? c.Set<T>().ToList() : c.Set<T>().Where(filter).ToList();
         }
 
         public void TAdd(T t)

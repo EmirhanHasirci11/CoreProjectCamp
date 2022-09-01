@@ -16,6 +16,10 @@ namespace EntityLayer.Concrete
         public string AuthorImage{ get; set; }
         public string AuthorMail{ get; set; }
         public string AuthorPassword{ get; set; }
+        [Required(ErrorMessage ="Şifrenizi tekrar girerek onaylamanız zorunludur")]
+        [Compare("AuthorPassword",ErrorMessage ="Şifrelerin eşleştiğinden emin olun")]
+        public string AuthorConfirmPassword{ get; set; }
         public bool AuthorStatus{ get; set; }
+        public ICollection<Blog> Blogs{ get; set; }
     }
 }

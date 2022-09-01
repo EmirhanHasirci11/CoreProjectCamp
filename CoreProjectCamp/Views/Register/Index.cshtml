@@ -1,0 +1,76 @@
+﻿@model EntityLayer.Concrete.Author
+@{ 
+    var cities = TempData["cities"];
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Display_Layout_.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<style>
+    span.field-validation-error {
+        color:red;
+    }
+</style>
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Yeni Hesap Oluştur</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <form action="#" method="post">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Ad</label>
+
+                            <input type="text" asp-for="AuthorName" class="form-control" id="validationDefault01" placeholder="Adınız" >
+                            <span asp-validation-for="AuthorName"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">Soyad</label>
+                            <input type="text" asp-for="AuthorSurname" class="form-control" id="validationDefault02" placeholder="Soyadınız">
+                            <span asp-validation-for="AuthorSurname"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şehirler</label>
+                            <select class="form-control" asp-items="@(List<SelectListItem>)cities"></select>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Mail</label>
+                            <input type="email" asp-for="AuthorMail" class="form-control" id="password1" placeholder="Mailiniz" >
+                            <span asp-validation-for="AuthorMail"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                            <input type="password" class="form-control" asp-for="AuthorPassword" id="password1" placeholder="Şifreniz" >
+                            <span asp-validation-for="AuthorPassword"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Şifrenizi Onaylayın</label>
+                            <input type="password" class="form-control" id="password2" asp-for="AuthorConfirmPassword" placeholder="Girdiğiniz şifreyi yeniden giriniz" >
+                            <span asp-validation-for="AuthorConfirmPassword"></span>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <p>
+                        <a href="#" id="btn1">By clicking Signup, I agree to your terms</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <script>
+        $('#btn1').click(function () {
+            swal("Kayıt olurken girdiğiniz mail adresinize bilgi ve haber e-postaları spam ölçüsüne varmadan gönderilmeye  devam edilecektir");
+        })
+    </script>
+</section>
+
