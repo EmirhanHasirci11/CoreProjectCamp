@@ -27,6 +27,13 @@ namespace DataAccessLayer.Concrete.EntityFramework
                 return c.Blogs.Include(x => x.Category).Where(x => x.AuthorID == id).OrderByDescending(x=>x.BlogID).ToList();
             }
         }
+        public List<Blog> LatestBlogsWithCount(int? count)
+        {
+            using(var c = new Context())
+            {
+                return count!=null? c.Blogs.Include(x => x.Category).OrderByDescending(x => x.BlogID).Take((int)count).ToList() : c.Blogs.Include(x => x.Category).OrderByDescending(x => x.BlogID).ToList();
+            }
+        }
 
         public List<Blog> GetlistWithCategory()
         {

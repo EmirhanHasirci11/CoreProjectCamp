@@ -1,0 +1,448 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HBlog | Vitrin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/AdminPanel/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="~/AdminPanel/css/animate.css" rel="stylesheet">
+    <link href="~/AdminPanel/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/AdminPanel/css/style.css" rel="stylesheet">
+</head>
+<body id="page-top" class="landing-page no-skin-config">
+    <partial name="/Areas/Showcase/Views/Mainpage/Navbar.cshtml">
+
+        <div id="inSlider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+                <li data-target="#inSlider" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>
+                               Nelerle uğraşıyorun<br />
+                                Game-design,<br />
+                                Web Development<br />
+                                
+                            </h1>
+                            <p>Ben Emirhan Hasırcı yazılım ile uğraşıyorum</p>
+                            <p>
+                                <a class="btn btn-lg btn-primary" href="#" role="button">Detaylar</a>
+                               
+                            </p>
+                        </div>
+                        <div class="carousel-image wow zoomIn">
+                            <img src="~/AdminPanel/img/landing/laptop.png" alt="laptop" />
+                        </div>
+                    </div>
+                    <!-- Set background for slide in css -->
+                    <div class="header-back one"></div>
+
+                </div>
+                <div class="carousel-item">
+                    <div class="container">
+                        <div class="carousel-caption blank">
+                            <h1>Tamamen Duyarlı arayüz<br /> </h1>
+                            <p>Bu proje her platform için uygun ölçeklendirmeye sahip <br /> INSPINIA teması kullanarak geliştirilmiştir</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Detaylar</a></p>
+                        </div>
+                    </div>
+                    <!-- Set background for slide in css -->
+                    <div class="header-back two"></div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#inSlider" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Önceki</span>
+            </a>
+            <a class="carousel-control-next" href="#inSlider" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Sonraki</span>
+            </a>
+        </div>
+
+
+        <section id="features" class="container services">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Tamamen duyarlı</h2>
+                        <p>Bu proje her platform için uygun ölçeklendirmeye sahip <br /> INSPINIA teması kullanarak geliştirilmiştir</p>
+                    <p><a class="navy-link" href="#" role="button">Detaylar &raquo;</a></p>
+                </div>
+                <div class="col-sm-6">
+                    <h2>Proje Github</h2>
+                    <p>Detaylar kısmına tıklayarak projenin github kısmına ulaşabilirsiniz</p>
+                    <p><a class="navy-link" href="https://github.com/EmirhanHasirci11/CoreProjectCamp" role="button">Detaylar &raquo;</a></p>
+                </div>
+               
+            </div>
+        </section>
+
+        <section class="container features">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Blogumuzda içerik üreticisi olmak<br /> <span class="navy">Birbirinden farklı kategoriler</span> </h1>
+                    <p>İlgilendiğiniz alan için istediğiniz kadar blog üretebilirsiniz. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-center wow fadeInLeft">
+                    <div>
+                        <i class="fa fa-mobile features-icon"></i>
+                        <h2>Tamamen Duyarlı</h2>
+                        <p>Bu proje her platform için uygun ölçeklendirmeye sahip INSPINIA teması kullanarak geliştirilmiştir</p>
+                    </div>
+                    <div class="m-t-lg">
+                        <i class="fa fa-bar-chart features-icon"></i>
+                        <h2>Puanlama Sistemi</h2>
+                        <p>Bloglara puan verebilir ve kendi oluşturduğunuz blogun puanlamasını kontrol edebilirsiniz</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center  wow zoomIn">
+                    <img src="~/AdminPanel/img/landing/perspective.png" alt="dashboard" class="img-fluid">
+                </div>
+                <div class="col-md-3 text-center wow fadeInRight">
+                    <div>
+                        <i class="fa fa-envelope features-icon"></i>
+                        <h2>Mail Sayfaları</h2>
+                        <p>Blogumuzda içerik üretenler ile istediğiniz gibi mail sistemimizi kullanarak mesajlaşabilirsiniz</p>
+                    </div>
+                    <div class="m-t-lg">
+                        <i class="fa fa-comment features-icon"></i>
+                        <h2>Yorum Sayfaları</h2>
+                        <p>Üretilmiş olan bloglara yeni yorumlar yazabilir veya kendi oluşturduğunuz blogdaki yorumları inceleyebilirsiniz</p>
+                    </div>
+                </div>
+            </div>
+          
+        </section>
+
+        <section id="team" class="gray-section team">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>Geliştirici</h1>
+                        <p>Projeyi geliştiren kişiler</p>
+                    </div>
+                </div>
+                <div style="justify-content:center" class="row">
+                 
+                    <div style="justify-content:center" class="col-sm-4">
+                        <div class="team-member wow zoomIn">
+                            <img src="~/AdminPanel/img/landing/avatar1.jpg" class="img-fluid rounded-circle" alt="">
+                            <h4><span class="navy">Emirhan</span> Hasırcı</h4>
+                            <p>Bartın Üniversitesi Bilgisayar Mühendisliği 2.Sınıf Öğrencisi,Web Developer</p>
+                            <ul class="list-inline social-icon">
+                                <li class="list-inline-item">
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+               
+            </div>
+        </section>
+
+      
+
+        <section class="timeline gray-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>Çalışma İzlencesi</h1>
+                        <p>Çalışmanın geçtiği aşamaların kronolojik bir yansıması</p>
+                    </div>
+                </div>
+                <div class="row features-block">
+
+                    <div class="col-lg-12">
+                        <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-gear"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Projenin başlangıcı</h2>
+                                    <p>
+                                        Murat Yücedağ Asp.net Core 5.0 youtube eğitimi ile başladığım bu projeye bugün ilk başlangıcı attığım gün
+                                    </p>
+                                    <a href="#" class="btn btn-xs btn-primary">Detaylar</a>
+                                    <span class="vertical-date"> Ağustos <br /> <small>29.08.2022</small> </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-file-text"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Kamp Sonu</h2>
+                                    <p>Kampın sonunda birçok yeni bilgiler öğrenip bildiklerimi de pekiştirmiş durumdayım<p>
+                                    <a href="#" class="btn btn-xs btn-primary">Detaylar</a>
+                                    <span class="vertical-date"> Eylül <br /> <small>18.09.2022</small> </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-cogs"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Yayınlanma Tarihi</h2>
+                                    <p>Projenin canlıy alınma tarihidir
+                                    </p>
+                                    <a href="#" class="btn btn-xs btn-primary"> More info</a>
+                                    <span class="vertical-date"> Monday <br /> <small>Jan 02</small> </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section id="testimonials" class="navy-section testimonials" style="margin-top: 0">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center wow zoomIn">
+                        <i class="fa fa-comment big-icon"></i>
+                        <h1>
+                            Kullanıcılarımız neler söylüyor?
+                        </h1>
+                        <div class="testimonials-text">
+                            <i>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"</i>
+                        </div>
+                        <small>
+                            <strong>22.09.2022 - Emirhan Hasırcı</strong>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="comments gray-section" style="margin-top: 0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>Partnerlerimiz neler söylüyor?</h1>
+                        <p>Parternerlerimizin bizim hakkımızdaki düşünceleri.</p>
+                    </div>
+                </div>
+                <div class="row features-block">
+                    <div class="col-lg-4">
+                        <div class="bubble">
+                            "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                        </div>
+                        <div class="comments-avatar">
+                            <a href="" class="float-left">
+                                <img alt="image" src="~/AdminPanel/img/landing/avatar3.jpg">
+                            </a>
+                            <div class="media-body">
+                                <div class="commens-name">
+                                    Andrew Williams
+                                </div>
+                                <small class="text-muted">Company X from California</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="bubble">
+                            "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                        </div>
+                        <div class="comments-avatar">
+                            <a href="" class="float-left">
+                                <img alt="image" src="~/AdminPanel/img/landing/avatar1.jpg">
+                            </a>
+                            <div class="media-body">
+                                <div class="commens-name">
+                                    Andrew Williams
+                                </div>
+                                <small class="text-muted">Company X from California</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="bubble">
+                            "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                        </div>
+                        <div class="comments-avatar">
+                            <a href="" class="float-left">
+                                <img alt="image" src="~/AdminPanel/img/landing/avatar2.jpg">
+                            </a>
+                            <div class="media-body">
+                                <div class="commens-name">
+                                    Andrew Williams
+                                </div>
+                                <small class="text-muted">Company X from California</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </section>
+
+        
+
+
+        <section id="contact" class="gray-section contact">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>İletişime geçin</h1>
+                        <p>Benimle paylaşmak istediğiniz bir öneriniz varsa iletişime geçin</p>
+                    </div>
+                </div>
+                <div class="row m-b-lg justify-content-center">
+                    <div class="col-lg-3 ">
+                        <address>
+                            <strong><span class="navy">Emirhan Hasırcı.</span></strong><br />
+                            <br />
+                            Türkiye<br />
+                            <abbr title="Phone">Tel:</abbr> (555) 555-5555
+                        </address>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="text-color">
+                            Bu projeye Murat Yücedağ Asp.Net Core 5.0 Kampı ile başlamıştım. Projenin tasarımınıda daha uygun olduğunu düşündüğüm için admin temasını yazar teması ile aynı kullanmaya karar verdim ve kendimce üzerinde revizelerde bulundum
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a href="mailto:emir_han886@outlook.com" class="btn btn-primary">Mail Gönder</a>
+                        <p class="m-t-sm">
+                            Bizi sosyal medyada takip edin
+                        </p>
+                        <ul class="list-inline social-icon">
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center m-t-lg m-b-lg">
+                        <p><strong>&copy; @DateTime.Now.Year Emirhan Hasırcı</strong><br /> Asp.Net Core 5.0 Blog Projesi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mainly scripts -->
+        <script src="~/AdminPanel/js/jquery-3.1.1.min.js"></script>
+        <script src="~/AdminPanel/js/popper.min.js"></script>
+        <script src="~/AdminPanel/js/bootstrap.js"></script>
+        <script src="~/AdminPanel/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="~/AdminPanel/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+        <!-- Custom and plugin javascript -->
+        <script src="~/AdminPanel/js/inspinia.js"></script>
+        <script src="~/AdminPanel/js/plugins/pace/pace.min.js"></script>
+        <script src="~/AdminPanel/js/plugins/wow/wow.min.js"></script>
+
+
+        <script>
+    $(document).ready(function () {
+
+                $('body').scrollspy({
+                    target: '#navbar',
+                    offset: 80
+                });
+
+                // Page scrolling feature
+                $('a.page-scroll').bind('click', function (event) {
+                    var link = $(this);
+                    $('html, body').stop().animate({
+                        scrollTop: $(link.attr('href')).offset().top - 50
+                    }, 500);
+                    event.preventDefault();
+                    $("#navbar").collapse('hide');
+                });
+            });
+
+            var cbpAnimatedHeader = (function () {
+                var docElem = document.documentElement,
+                    header = document.querySelector('.navbar-default'),
+                    didScroll = false,
+                    changeHeaderOn = 200;
+                function init() {
+                    window.addEventListener('scroll', function (event) {
+                        if (!didScroll) {
+                            didScroll = true;
+                            setTimeout(scrollPage, 250);
+                        }
+                    }, false);
+                }
+                function scrollPage() {
+                    var sy = scrollY();
+                    if (sy >= changeHeaderOn) {
+                        $(header).addClass('navbar-scroll')
+                    }
+                    else {
+                        $(header).removeClass('navbar-scroll')
+                    }
+                    didScroll = false;
+                }
+                function scrollY() {
+                    return window.pageYOffset || docElem.scrollTop;
+                }
+                init();
+
+            })();
+
+            // Activate WOW.js plugin for animation on scrol
+            new WOW().init();</script>
+
+</body>
+</html>
+
+

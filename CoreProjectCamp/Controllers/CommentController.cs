@@ -1,4 +1,6 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +13,13 @@ namespace CoreProjectCamp.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager cm = new CommentManager(new EFCommentDal());
+        ICommentService _commentService;
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -28,14 +36,14 @@ namespace CoreProjectCamp.Controllers
         {
             
             
-            cm.TAdd(c);
+            _commentService.TAdd(c);
 
             return Json(true);
 
         }
         public PartialViewResult CommentsByBlog(int id)
         {
-            var comments = cm.GetList(id);
+            var comments = _commentService.GetList(id);
             return PartialView(comments);
         }
     }

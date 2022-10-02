@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Notification>
+@{
+    ViewData["Title"] = "AllNotifications";
+    Layout = "~/Views/Shared/_Author_Layout_.cshtml";
+}
+@{ 
+    string time = "";
+    DateTime now = DateTime.Now;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Bildirim Türü</th>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                TimeSpan calculatedTime = now.Subtract(item.NotificationDate);
+
+                if (calculatedTime.Days == 0)
+                {
+                    if (calculatedTime.Minutes == 0 && calculatedTime.Hours == 0)
+                    {
+                        time = "Şimdi";
+                    }
+                    else if (calculatedTime.Minutes > 0 && calculatedTime.Hours == 0)
+                    {
+                        time = calculatedTime.Minutes + " Dakika önce";
+                    }
+                    else
+                    {
+                        time = calculatedTime.Hours + " Saat " + calculatedTime.Minutes + " Dakika önce";
+                    }
+                }
+                else
+                {
+                    if (calculatedTime.Hours == 0)
+                    {
+                        time = calculatedTime.Days + " Gün önce";
+                    }
+                    else
+                    {
+                        time = calculatedTime.Days + " Gün " + calculatedTime.Hours + " Saat önce";
+                    }
+                }
+                <tr>
+                    <td>@item.NotificationID</td>
+                    <td>@item.NotificationType</td>
+                    <td>@item.NotificationDetails</td>
+                    <td>@time Gönderildi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+

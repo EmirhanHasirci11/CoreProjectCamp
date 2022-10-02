@@ -1,0 +1,13 @@
+﻿@model CoreProjectCamp.Controllers.EmployeeTestController.Class1
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout_.cshtml";
+}
+<form method="post" >
+
+<label class="form-control">Çalışan ismi</label>
+<input type="text"  asp-for="EmployeeName"class="form-control"/>
+    <br />
+    <button type="submit" class="btn btn-primary">Yeni Çalışan Ekle</button>
+
+</form>

@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,10 +11,16 @@ namespace CoreProjectCamp.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryManager cm = new CategoryManager(new EFCategoryDal());
+        ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
         public IActionResult Index()
         {
-            var categories = cm.GetList();
+            var categories = _categoryService.GetList();
             return View(categories);
         }
     }

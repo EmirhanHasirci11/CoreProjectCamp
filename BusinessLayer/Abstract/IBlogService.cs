@@ -12,5 +12,8 @@ namespace BusinessLayer.Abstract
         List<Blog> GetBlogListWithCategory();
         List<Blog> AuthorGetBloglistWithCategory(int id);
         List<Blog> AuthorsLatestBlogs(int id);
+        List<Blog> LatestBlogsWithCount(int? count);
+        void AuthorBlogStatusToFalse(int id);
+        void AuthorBlogStatusToTrue(int id);
     }
 }

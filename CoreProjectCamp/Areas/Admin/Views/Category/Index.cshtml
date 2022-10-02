@@ -1,0 +1,69 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+
+@model IPagedList<EntityLayer.Concrete.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout_.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kategori Adı</th>
+                <th>Kategori Açıklaması</th>
+                <th>Kategori Rengi</th>
+                <th>Kategori Durumu</th>
+                <th colspan="2">Araçlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryID</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.CategoryDescription</td>
+                    <td class="badge small" style="background-color:@item.CategoryColor;color:white">Kategori</td>
+                    <td> @Html.Raw(item.CategoryStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
+                    @switch (item.CategoryStatus)
+                    {
+                        case true:
+                            <td>
+                                <a id="DeleteBtnPasif" onclick="return confirm('Kategori \'yi Pasif hale getirmek istediğinize emin misiniz ?');" class="btn btn-danger btn-sm" href="/Admin/Category/ChangeStatusFalse/@item.CategoryID">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Pasif Yap
+                                </a>
+                            </td>
+                            break;
+                        case false:
+                            <td>
+                                <a id="DeleteBtnActive" onclick="return confirm('Kategori \'yi Aktif hale getirmek istediğinize emin misiniz ?');" class="btn btn-success btn-sm" href="/Admin/Category/ChangeStatusTrue/@item.CategoryID">
+                                    <i class="fas fa-check">
+                                    </i>
+                                    Aktif Yap
+                                </a>
+                            </td>
+                            break;
+
+                    }
+                    <td><a href="/Admin/Category/EditCategory/@item.CategoryID" class="btn btn-warning btn-sm">Güncelle</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Admin/Category/AddCategory" class="btn btn-primary">Yeni Kategori Ekle</a>
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+

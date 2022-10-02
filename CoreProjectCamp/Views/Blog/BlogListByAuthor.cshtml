@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "BlogListByAuthor";
+    Layout = "~/Views/Shared/_Author_Layout_.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Yazar blokları</title>
+</head>
+<body>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Başlık</th>
+                <th>Oluşturulma tarihi</th>
+                <th>Kategori</th>
+                <th>Blog Durumu</th>
+                <th style="text-align:center" colspan="2">Araçlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td>@item.BlogID</td>
+                <td>@item.BlogTitle</td>
+                <td>@(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
+                <td><span class="badge" style="background-color:@item.Category.CategoryColor;min-width:70px;color:white;">@item.Category.CategoryName</span></td>
+                <td> @Html.Raw(item.BlogStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
+                @switch (item.BlogStatus)
+                {
+                    case true:
+                        <td>
+                            <a id="DeleteBtnPasif" onclick="return confirm('Blog yazısını Pasif hale getirmek istediğinize emin misiniz ?');" class="btn btn-danger btn-sm" href="/Blog/ChangeStatusFalse/@item.BlogID">
+                                <i class="fas fa-trash">
+                                </i>
+                                Pasif Yap
+                            </a>
+                        </td>
+                        break;
+                    case false:
+                        <td>
+                            <a id="DeleteBtnActive" onclick="return confirm('Blog yazısını Aktif hale getirmek istediğinize emin misiniz ?');" class="btn btn-success btn-sm" href="/Blog/ChangeStatusTrue/@item.BlogID">
+                                <i class="fas fa-check">
+                                </i>
+                                Aktif Yap
+                            </a>
+                        </td>
+                        break;
+                }
+                <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning btn-sm">Güncelle</a> </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Blog/AddBlog" class="btn btn-primary">Yeni blog girişi</a>
+</body>
+</html>
+
+

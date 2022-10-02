@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Message2>
+@{
+    string time = "";
+    DateTime now = DateTime.Now;
+}
+<li class="dropdown">
+    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope"></i>  <span class="label label-warning">@ViewBag.message</span>
+    </a>
+    <ul class="dropdown-menu dropdown-messages">
+        @foreach (var item in Model)
+        {
+            TimeSpan calculatedTime = now.Subtract(item.MessageDate);
+
+            if (calculatedTime.Days == 0)
+            {
+                if (calculatedTime.Minutes == 0 && calculatedTime.Hours == 0)
+                {
+                    time = "Şimdi";
+                }
+                else if (calculatedTime.Minutes > 0 && calculatedTime.Hours == 0)
+                {
+                    time = calculatedTime.Minutes + " Dakika önce";
+                }
+                else
+                {
+                    time = calculatedTime.Hours + " Saat " + calculatedTime.Minutes + " Dakika önce";
+                }
+            }
+            else
+            {
+                if (calculatedTime.Hours == 0)
+                {
+                    time = calculatedTime.Days + " Gün önce";
+                }
+                else
+                {
+                    time = calculatedTime.Days + " Gün " + calculatedTime.Hours + " Saat önce";
+                }
+            }
+            <li>
+                <div class="dropdown-messages-box">
+                    <a class="dropdown-item float-left" href="/Author/Message/MessageDetails/@item.MessageID">
+                        <img alt="image" class="rounded-circle" src="@item.SenderUser.AuthorImage">
+                    </a>
+                    <div class="media-body">
+                        <small class="float-right"></small>
+                        <a class="small" style="color:black" href="/Author/Message/MessageDetails/@item.MessageID"><strong>@item.SenderUser.AuthorName @item.SenderUser.AuthorSurname</strong></a>
+                        <br />
+                        <strong>@item.Subject </strong>
+                        <br>
+                        <small class="text-muted">@time</small>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown-divider"></li>
+        }
+
+        <li>
+            <div class="text-center link-block">
+                <a href="/Author/Message/Inbox" class="dropdown-item">
+                    <i class="fa fa-envelope"></i> <strong>Bütün mesajları görüntüle</strong>
+                </a>
+            </div>
+        </li>
+    </ul>
+</li>

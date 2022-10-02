@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "DraftBox";
+    Layout = "~/Areas/Author/Views/Shared/_Author_Layout_.cshtml";
+}
+
+@{
+    string time = "";
+    DateTime now = DateTime.Now;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            @await Component.InvokeAsync("MessageSidebar")
+            <div class="col-lg-9">
+                <div class="mail-box-header">
+
+                    <form method="get" action="index.html" class="float-right mail-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" name="search" placeholder="Mail ara">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    Ara
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>
+                        Taslaklar(@ViewBag.count)
+
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group float-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                        </div>
+                        <a href="/Author/Message/DraftBox" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Sayfayı Yenile"><i class="fa fa-refresh"></i> Yenile</a>
+
+                    </div>
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                TimeSpan calculatedTime = now.Subtract(item.MessageDate);
+
+                                if (calculatedTime.Days == 0)
+                                {
+                                    if (calculatedTime.Minutes == 0 && calculatedTime.Hours == 0)
+                                    {
+                                        time = "Şimdi";
+                                    }
+                                    else if (calculatedTime.Minutes > 0 && calculatedTime.Hours == 0)
+                                    {
+                                        time = calculatedTime.Minutes + " Dakika önce";
+                                    }
+                                    else
+                                    {
+                                        time = calculatedTime.Hours + " Saat " + calculatedTime.Minutes + " Dakika önce";
+                                    }
+                                }
+                                else
+                                {
+                                    if (calculatedTime.Hours == 0)
+                                    {
+                                        time = calculatedTime.Days + " Gün önce";
+                                    }
+                                    else
+                                    {
+                                        time = calculatedTime.Days + " Gün " + calculatedTime.Hours + " Saat önce";
+                                    }
+                                }
+                                <tr class="unread">
+                                    <td class="check-mail">
+                                        <input type="checkbox" class="i-checks">
+                                    </td>
+                                    <td class="mail-ontact"><a href="/Author/Message/EditDraft/@item.MessageID">@item.ReceiverUser.AuthorName @item.ReceiverUser.AuthorSurname &nbsp;<small>@item.ReceiverUser.AuthorMail</small></a>  </td>
+                                    <td class="mail-subject"><a href="/Author/Message/EditDraft/@item.MessageID">@item.Subject</a></td>
+                                    <td class=""></td>
+                                    <td class="text-right mail-date">@time</td>
+                                    <td width="1%"><a href="/Author/Message/EditDraft/@item.MessageID" class="btn btn-white btn-sm float-right" data-toggle="tooltip" data-placement="top" title="Düzenle"><i class="fa fa-edit"></i> </a></td>
+                                    <td width="1%"><a href="/Author/Message/SendToTrashSender/@item.MessageID" class="btn btn-white btn-sm float-right" data-toggle="tooltip" data-placement="top" title="Çöp kutusuna gönder"><i class="fa fa-trash"></i> </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

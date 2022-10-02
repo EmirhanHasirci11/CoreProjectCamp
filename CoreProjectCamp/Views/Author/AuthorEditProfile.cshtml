@@ -1,0 +1,66 @@
+﻿@model EntityLayer.Concrete.Author 
+@{
+    ViewData["Title"] = "AuthorEditProfile";
+    Layout = "~/Views/Shared/_Author_Layout_.cshtml";
+}
+<style>
+    span.field-validation-error {
+        color: red;
+    }
+</style>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kullanıcı Bilgilerim</h4>
+            <p class="card-description"> Bilgileri Düzenle</p>
+            <form action="/Author/AuthorEditProfile" method="post">
+                <input asp-for="AuthorID" type="hidden" />
+                <div class="form-group">
+                    <label for="exampleInputName1">İsim *</label>
+                    <input type="text" asp-for="AuthorName" class="form-control" id="exampleInputName1" placeholder="İsim">
+                    <span asp-validation-for="AuthorName"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Soyisim *</label>
+                    <input type="text" class="form-control" asp-for="AuthorSurname" id="exampleInputName1" placeholder="Soyisim">
+                    <span asp-validation-for="AuthorSurname"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Mail adresi *</label>
+                    <input type="email" class="form-control" asp-for="AuthorMail" id="exampleInputEmail3" placeholder="Mail">
+                    <span asp-validation-for="AuthorMail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Şifre *</label>
+                    <input type="password" class="form-control" asp-for="AuthorPassword" placeholder="Şifre">
+                    <span asp-validation-for="AuthorPassword"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Şifrenizi tekrar giriniz *</label>
+                    <input type="password" class="form-control" asp-for="AuthorConfirmPassword" placeholder="Şifre">
+                    <span asp-validation-for="AuthorConfirmPassword"></span>
+                </div>
+                <div class="form-group">
+                    <label>Resim Dosyası Yükle</label>
+                    <input type="file" name="img[]" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hakkınızda *</label>
+                    <textarea class="form-control" asp-for="AuthorAbout" rows="4"></textarea>
+                    <span asp-validation-for="AuthorAbout"></span>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                <button class="btn btn-light">İptal Et</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/AuthorPanel/assets/js/file-upload.js"></script>
+

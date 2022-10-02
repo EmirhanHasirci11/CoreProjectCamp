@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Message2>
+@{
+    string time = "";
+    DateTime now = DateTime.Now;
+}
+<li class="nav-item dropdown">
+    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <i class="mdi mdi-email-outline"></i>
+        <span class="count-symbol bg-warning"></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+        <h6 class="p-3 mb-0">Mesajlar</h6>
+        @foreach (var item in Model)
+        {
+            TimeSpan calculatedTime = now.Subtract(item.MessageDate);
+
+            if (calculatedTime.Days == 0)
+            {
+                if (calculatedTime.Minutes == 0 && calculatedTime.Hours == 0)
+                {
+                    time = "Şimdi";
+                }
+                else if (calculatedTime.Minutes > 0 && calculatedTime.Hours == 0)
+                {
+                    time = calculatedTime.Minutes + " Dakika önce";
+                }
+                else
+                {
+                    time = calculatedTime.Hours + " Saat " + calculatedTime.Minutes + " Dakika önce";
+                }
+            }
+            else
+            {
+                if (calculatedTime.Hours == 0)
+                {
+                    time = calculatedTime.Days + " Gün önce";
+                }
+                else
+                {
+                    time = calculatedTime.Days + " Gün " + calculatedTime.Hours + " Saat önce";
+                }
+            }
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="@item.SenderUser.AuthorImage" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+
+                    <small class="text-gray mb-0">@time Gönderildi</small>
+                    <h6 style="display:inline-block" class="preview-subject ellipsis mb-1 font-weight-normal">@item.SenderUser.AuthorName @item.SenderUser.AuthorSurname</h6>
+
+                    <p style="display:inline-block" class="text-black mb-2"><small class="text-gray">Konu:</small>@item.Subject</p>
+                </div>
+            </a>
+            <div class="dropdown-divider"></div>
+        }
+        <h6 class="p-3 mb-0 text-center">(0) Yeni mesajınız var</h6>
+    </div>
+</li>

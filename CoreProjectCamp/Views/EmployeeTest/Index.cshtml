@@ -1,0 +1,26 @@
+﻿@using CoreProjectCamp.Controllers
+@model List<EmployeeTestController.Class1> 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout_.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Adı Soyadı</th>
+        <th colspan="2">Araçlar</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.EmployeeID</td>
+                    <td>@item.EmployeeName</td>
+                    <td><a href="/EmployeeTest/DeleteEmployee/@item.EmployeeID" class="btn btn-warning">Sil</a></td>
+                    <td><a href="/EmployeeTest/EditEmployee/@item.EmployeeID" class="btn btn-success">Düzenle</a></td>
+                </tr>
+            }
+
+</table>
+<a href="/EmployeeTest/AddEmployee" class="btn btn-primary">Yeni Çalışan Girişi</a>
+
+

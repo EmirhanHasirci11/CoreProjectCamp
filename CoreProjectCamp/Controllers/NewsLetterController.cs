@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,13 @@ namespace CoreProjectCamp.Controllers
 {
     public class NewsLetterController : Controller
     {
-        NewsLetterManager newsLetterManager = new NewsLetterManager(new EFNewsLetterDal());
+        INewsLetterService _newsLetterService;
+
+        public NewsLetterController(INewsLetterService newsLetterService)
+        {
+            _newsLetterService = newsLetterService;
+        }
+
         [HttpGet]
         public PartialViewResult SubscribeMail()
         {
@@ -21,7 +28,7 @@ namespace CoreProjectCamp.Controllers
         public IActionResult SubscribeMail(NewsLetter p)
         {
             p.MailStatus = true;
-            newsLetterManager.TAdd(p);
+              _newsLetterService.TAdd(p);
 
             return PartialView();
         }

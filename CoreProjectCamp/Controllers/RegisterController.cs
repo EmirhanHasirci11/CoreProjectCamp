@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using CoreProjectCamp.Models;
 using CoreProjectCamp.Models.EntityList;
@@ -16,7 +17,13 @@ namespace CoreProjectCamp.Controllers
 {
     public class RegisterController : Controller
     {
-        AuthorManager arm = new AuthorManager(new EFAuthorDal());
+        IAuthorService _authorService;
+
+        public RegisterController(IAuthorService authorService)
+        {
+            _authorService = authorService;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -41,7 +48,7 @@ namespace CoreProjectCamp.Controllers
             if (result.IsValid)
             {
                 p.AuthorStatus = true;
-                arm.TAdd(p);
+                _authorService .TAdd(p);
                 return RedirectToAction("Index", "Blog");
 
             }

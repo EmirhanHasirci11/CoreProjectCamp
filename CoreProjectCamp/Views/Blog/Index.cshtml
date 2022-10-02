@@ -13,7 +13,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a href="single.html">
+                            <a href="/Blog/BlogDetails/@item.BlogID">
                                 @*
                                     350x250 resim boyutu
                                 *@
@@ -39,7 +39,7 @@
 
                                 </ul>
                                 <h5 class="card-title">
-                                    <a href="single.html">@item.BlogTitle</a>
+                                    <a href="/Blog/BlogDetails/@item.BlogID">@item.BlogTitle</a>
                                 </h5>
                                 @if (item.BlogContent.Length < 200)
                                 {

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@foreach (var item in Model)
+{
+
+    <div class="blog-grids row mb-3">
+        <div class="col-md-5 blog-grid-left">
+            <a href="/Blog/BlogDetails/@item.BlogID">
+                <img src="@item.BlogThumbnailImage" class="card-img-top img-fluid" alt="">
+            </a>
+        </div>
+        <div class="col-md-7 blog-grid-right">
+            <a href="/Blog/BlogDetails/@item.BlogID"><h3>@item.BlogTitle</h3></a>
+            
+            <h5>
+                @if (item.BlogContent.Length < 100)
+                {
+                    <a href="/Blog/BlogDetails/@item.BlogID">@item.BlogContent  </a>
+                }
+                else
+                {
+                    <a href="/Blog/BlogDetails/@item.BlogID">
+                        @item.BlogContent.Substring(0, item.BlogContent.Substring(0, 100).LastIndexOf(" "))...
+                    </a>
+                }
+                
+            </h5>
+            <div class="sub-meta">
+                <span>
+                    <i class="far fa-clock"></i> @(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+}

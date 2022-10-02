@@ -1,0 +1,51 @@
+﻿@{ 
+    var latestBlog = (EntityLayer.Concrete.Blog)TempData["LatestBlog"];
+}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="widget navy-bg no-padding">
+            <div class="p-m">
+                <h1 class="m-xs">Dashboard</h1>
+
+                <h3 class="font-bold no-margins">
+                    Asp.Net Core 5.0
+                </h3>
+                <small>Projemizin bu panelinde admin işlemleri bir area üzerinden gerçekleşmektedir. Sidebar yardım menüsünden takıldığınız noktalarda yardım alabilirsiniz</small>
+            </div>
+            <div class="flot-chart">
+                <div class="flot-chart-content" id="flot-chart1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="widget lazur-bg no-padding">
+            <div class="p-m">
+                <h1 class="m-xs">Son eklenen blog</h1>
+
+                <h3 class="font-bold no-margins">
+                   Blog Başlığı: @latestBlog.BlogTitle
+                </h3>
+
+                <small>@(((DateTime)latestBlog.BlogCreateDate).ToString("dd-MMM-yyyy"))</small>
+            </div>
+            <div class="flot-chart">
+                <div class="flot-chart-content" id="flot-chart2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="widget yellw-bg no-padding">
+            <div class="p-m">
+                <h1 class="m-xs">₺ 2450,33</h1>
+
+                <h3 class="font-bold no-margins">
+                    Blog Site Kazancı
+                </h3>
+                <small>Reklamlar, Anlaşmalar</small>
+            </div>
+            <div class="flot-chart">
+                <div class="flot-chart-content" id="flot-chart3"></div>
+            </div>
+        </div>
+    </div>
+</div>

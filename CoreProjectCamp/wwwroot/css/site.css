@@ -11,6 +11,9 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
+span.field-validation-error {
+    color: red;
+}
 
 .btn-primary {
   color: #fff;

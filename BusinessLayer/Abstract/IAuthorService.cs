@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    interface IAuthorService:IGenericService<Author>
+   public interface IAuthorService : IGenericService<Author>
     {
-
+        Author FindByEmail(string mail);
     }
 }

@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,11 +11,17 @@ namespace CoreProjectCamp.ViewComponents.Comments
 {
     public class CommentListByBlog: ViewComponent
     {
-        CommentManager cm = new CommentManager(new EFCommentDal());
+        
+        ICommentService _commentService;
+
+        public CommentListByBlog(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
 
         public IViewComponentResult Invoke(int id)
         {
-            var values = cm.GetList(id);
+            var values = _commentService.GetList(id);
             return View(values);
         }
     }

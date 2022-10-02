@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Message2>
+@{
+    ViewData["Title"] = "InboxMessages";
+    Layout = "~/Views/Shared/_Author_Layout_.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Yazar blokları</title>
+</head>
+<body>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Gönderen Ad Soyad</th>                
+                <th>Başlık</th>
+                <th>İçerik</th>
+                <th>Gönderilme tarihi</th>
+                <th>Araçlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.SenderUser.AuthorImage" /></td>
+                    <td>@item.SenderUser.AuthorName @item.SenderUser.AuthorSurname</td>
+                    
+                    <td>@item.Subject</td>
+                    @if (item.MessageDetails.Length < 50)
+                {
+                    <td>@item.MessageDetails</td>
+                }
+                else
+                {
+                <td>@item.MessageDetails.Substring(0, item.MessageDetails.Substring(0, 50).LastIndexOf(" "))</td>
+                }
+
+                    <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>                   
+                    <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning btn-sm">Detaylar</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    
+</body>
+</html>

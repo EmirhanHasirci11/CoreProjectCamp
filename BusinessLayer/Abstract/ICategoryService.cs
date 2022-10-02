@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ICategoryService:IGenericService<Category>
     {
-
+        void ChangeStatus(int id, bool status);
     }
 }

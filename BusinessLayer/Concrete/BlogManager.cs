@@ -18,6 +18,20 @@ namespace BusinessLayer.Concrete
             _blogDal = blogDal;
         }
 
+        public void AuthorBlogStatusToFalse(int id)
+        {
+            var p = _blogDal.GetById(x=>x.BlogID==id);
+            p.BlogStatus = false;
+            _blogDal.TUpdate(p);
+        }
+
+        public void AuthorBlogStatusToTrue(int id)
+        {
+            var p = _blogDal.GetById(x => x.BlogID == id);
+            p.BlogStatus = true;
+            _blogDal.TUpdate(p);
+        }
+
         public List<Blog> AuthorGetBloglistWithCategory(int id)
         {
             return _blogDal.AuthorGetBloglistWithCategory(id);
@@ -47,6 +61,11 @@ namespace BusinessLayer.Concrete
         public List<Blog> GetList(int id)
         {
             return _blogDal.GetList(x => x.BlogID == id);
+        }
+
+        public List<Blog> LatestBlogsWithCount(int? count)
+        {
+            return count != null ? _blogDal.LatestBlogsWithCount((int)count) : _blogDal.LatestBlogsWithCount(null);
         }
 
         public void TAdd(Blog t)

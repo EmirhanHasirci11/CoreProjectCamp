@@ -1,0 +1,133 @@
+﻿@model CoreProjectCamp.Areas.Author.Models.Message.BaseClass
+@{
+    ViewData["Title"] = "Reply";
+    Layout = "~/Areas/Author/Views/Shared/_Author_Layout_.cshtml";
+}
+@{
+    string time = "";
+    DateTime now = DateTime.Now;
+    TimeSpan calculatedTime = now.Subtract(Model.Mreply.MessageDate);
+
+    if (calculatedTime.Days == 0)
+    {
+        if (calculatedTime.Minutes == 0 && calculatedTime.Hours == 0)
+        {
+            time = "Şimdi";
+        }
+
+        else if (calculatedTime.Minutes > 0 && calculatedTime.Hours == 0)
+        {
+            time = calculatedTime.Minutes + " Dakika önce";
+        }
+        else
+        {
+            time = calculatedTime.Hours + " Saat " + calculatedTime.Minutes + " Dakika önce";
+        }
+    }
+    else
+    {
+        if (calculatedTime.Hours == 0)
+        {
+            time = calculatedTime.Days + " Gün önce";
+        }
+        else
+        {
+            time = calculatedTime.Days + " Gün " + calculatedTime.Hours + " Saat önce";
+        }
+    }
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- include libraries(jQuery, bootstrap) -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            @await Component.InvokeAsync("MessageSidebar")
+            <div class="col-lg-9">
+                <div class="mail-box-header">
+                    <div class="float-right tooltip-demo">
+                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Taslak olarak kaydet"><i class="fa fa-pencil"></i> Taslak</a>
+                        <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Maili iptal et"><i class="fa fa-times"></i> İptal et</a>
+                    </div>
+                    <h2>
+                        Cevapla
+                    </h2>
+                </div>
+                <div class="mail-tools mail-box-header">
+                    <h5>
+                        <span class="font-normal">Konu: </span>@Model.Mreply.MessageSubject
+                    </h5>
+                    <h6>
+                        <span class="float-right font-normal"></span>
+                        <span class="font-normal">Kimden: <img style="width:50px" src=" @Model.Mreply.SenderImage" class="circle-border" />@Model.Mreply.SenderMail @Model.Mreply.SenderNameSurname </span>@time
+
+                    </h6>
+                    <h5>
+                        @Html.Raw(Model.Mreply.MessageDetails)
+                    </h5>
+                </div>
+                <div class="mail-box">
+
+
+                    <div class="mail-body">
+
+                        <form method="post" action="/Author/Message/Reply">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Kime:</label>
+
+                                <div class="col-sm-10"><input type="text" asp-for="Mmessage.Receiver" value="@ViewBag.receiver " readonly class="form-control" placeholder="Alıcı maili"></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Konu:</label>
+
+                                <div class="col-sm-10"><input type="text" asp-for="Mmessage.Subject" class="form-control" readonly placeholder="Mail konusu"></div>
+                            </div>
+
+
+                            <div class="mail-text h-200">
+
+                                <textarea id="summernote" asp-for="Mmessage.MessageDetails" class="form-control"></textarea>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="mail-body text-right tooltip-demo">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Gönder</button>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Mail içeriğini buraya giriniz.',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+</body>
+</html>
+

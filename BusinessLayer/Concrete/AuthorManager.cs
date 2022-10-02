@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _authorDal = authorDal;
         }
 
+        public Author FindByEmail(string mail)
+        {
+            return _authorDal.GetById(x => x.AuthorMail == mail);
+        }
+
         public Author GetById(int id)
         {
             return _authorDal.GetById(x=>x.AuthorID==id);

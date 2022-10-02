@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/_Author_Layout_.cshtml";
+}
+
+<style>
+    span.field-validation-error {
+        color: red;
+    }    
+</style>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 style="display:inline-block" class="card-title">Mesaj Detayları <small>Gönderilme Tarihi: @(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</small></h4>
+                
+
+
+            <div class="form-group">
+                <label style="font-size:20px" >Mesajı gönderen</label>
+                <p class="form-control">@Model.SenderUser.AuthorName @Model.SenderUser.AuthorSurname</p>
+
+            </div><div class="form-group">
+                <label  style="font-size:20px">Gönderen Mail</label>
+                <input type="text" asp-for="SenderUser.AuthorMail" class="form-control" id="exampleInputName1" disabled placeholder="İsim">
+
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" >Mesaj Başlığı</label>
+                <input type="text" asp-for="Subject" class="form-control" disabled id="exampleInputName1" placeholder="İsim">
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px">Mesaj İçeriği</label>
+                <textarea type="text" asp-for="MessageDetails" rows="10"  class="form-control" disabled id="exampleInputName1" placeholder="İsim"> </textarea>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/AuthorPanel/assets/js/file-upload.js"></script>
+

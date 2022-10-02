@@ -55,11 +55,14 @@
                             <input type="password" class="form-control" id="password2" asp-for="AuthorConfirmPassword" placeholder="Girdiğiniz şifreyi yeniden giriniz" >
                             <span asp-validation-for="AuthorConfirmPassword"></span>
                         </div>
+                        <div asp-validation-summary="ModelOnly">
+                            
+                        </div>
 
                     </div>
                     <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
                     <p>
-                        <a href="#" id="btn1">By clicking Signup, I agree to your terms</a>
+                        <a href="#"  id="btn1">By clicking Signup, I agree to your terms</a>
                     </p>
                 </form>
 

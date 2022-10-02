@@ -18,6 +18,13 @@ namespace BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
+        public void ChangeStatus(int id, bool status)
+        {
+            var categoryValue = _categoryDal.GetById(x => x.CategoryID == id);
+            categoryValue.CategoryStatus = status;
+            _categoryDal.TUpdate(categoryValue);
+        }
+
         public Category GetById(int id)
         {
            return _categoryDal.GetById(x=>x.CategoryID==id);

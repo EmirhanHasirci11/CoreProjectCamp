@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout_.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Widgets</title>
+
+    <link href="~/AdminPanel/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/AdminPanel/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/AdminPanel/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="~/AdminPanel/css/animate.css" rel="stylesheet">
+    <link href="~/AdminPanel/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+
+
+
+        <div class="row border-bottom">
+
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            @await Component.InvokeAsync("Statistic1")
+
+            @await Component.InvokeAsync("Statistic2")
+
+            @await Component.InvokeAsync("Statistic3")
+
+            @await Component.InvokeAsync("Statistic4")
+
+            @await Component.InvokeAsync("Statistic5")
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Mainly scripts -->
+    <script src="~/AdminPanel/js/jquery-3.1.1.min.js"></script>
+    <script src="~/AdminPanel/js/popper.min.js"></script>
+    <script src="~/AdminPanel/js/bootstrap.js"></script>
+    <script src="~/AdminPanel/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/AdminPanel/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- jquery UI -->
+    <script src="~/AdminPanel/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Touch Punch - Touch Event Support for jQuery UI -->
+    <script src="~/AdminPanel/js/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/AdminPanel/js/inspinia.js"></script>
+    <script src="~/AdminPanel/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="~/AdminPanel/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Jvectormap -->
+    <script src="~/AdminPanel/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/AdminPanel/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Flot -->
+    <script src="~/AdminPanel/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/AdminPanel/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/AdminPanel/js/plugins/flot/jquery.flot.resize.js"></script>
+
+
+
+</body>
+
+</html>
+
+

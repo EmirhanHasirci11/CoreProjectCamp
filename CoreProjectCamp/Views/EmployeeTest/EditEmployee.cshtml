@@ -1,0 +1,16 @@
+﻿@using CoreProjectCamp.Controllers
+@model EmployeeTestController.Class1
+@{
+    ViewData["Title"] = "EditEmployee";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout_.cshtml";
+}
+
+<form method="post">
+    <div class="form-group">
+        <input  type="hidden" asp-for="EmployeeID"/>
+        <label>İşçi ismi</label>
+        <input type="text" asp-for="EmployeeName" />
+    </div>
+    <button type="submit" class="btn btn-dark">Güncelle</button>
+</form>
+

@@ -1,0 +1,86 @@
+﻿@model EntityLayer.Concrete.Admin
+<div class="row">
+    <div class="col-lg-4">
+        <div class="widget-head-color-box navy-bg p-lg text-center">
+            <div class="m-b-md">
+                <h2 class="font-bold no-margins">
+                    @Model.Name  @Model.Surname
+                </h2>
+                <small>@Model.Role</small>
+            </div>
+            <img src="@Model.ImageUrl" style="width:165px;" class="rounded-circle circle-border m-b-md" alt="profile">
+            <div>
+                <span>100 Tweets</span> |
+                <span>350 Following</span> |
+                <span>610 Followers</span>
+            </div>
+        </div>
+        <div class="widget-text-box">
+            <h4 class="media-heading">@Model.Name  @Model.Surname</h4>
+            <p>@Model.ShortDescription</p>
+            <div class="text-right">
+                <a href="" class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                <a href="" class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="widget navy-bg p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-shield fa-4x"></i>
+                <h1 class="m-xs">456</h1>
+                <h3 class="font-bold no-margins">
+                    Shield
+                </h3>
+                <small>power</small>
+            </div>
+        </div>
+        <div class="widget  p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-flash fa-4x"></i>
+                <h1 class="m-xs">612</h1>
+                <h3 class="font-bold no-margins">
+                    Thunder
+                </h3>
+                <small>amount</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 text-center">
+        <div class="widget lazur-bg p-xl">
+
+            <h2>
+                Emirhan Hasırcı(Owner)
+            </h2>
+            <ul class="list-unstyled m-t-md">
+                <li>
+                    <span class="fa fa-envelope m-r-xs"></span>
+                    <label>Email:</label>
+                    emir_han886@outlook.com
+                </li>
+                <li>
+                    <span class="fa fa-home m-r-xs"></span>
+                    <label>Adres:</label>
+                    Türkiye
+                </li>
+                <li>
+                    <span class="fa fa-phone m-r-xs"></span>
+                    <label>İletişim:</label>
+                    (555) 555 5555
+                </li>
+            </ul>
+
+        </div>
+        <div class="widget red-bg p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-bell fa-4x"></i>
+                <h1 class="m-xs">@ViewBag.allNotification</h1>
+                <h3 class="font-bold no-margins">
+                    Bildirimler
+                </h3>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
